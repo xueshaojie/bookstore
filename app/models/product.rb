@@ -15,8 +15,8 @@ class Product < ApplicationRecord
   belongs_to :category
   has_many :photos, -> { order(weight: 'desc') },
     dependent: :destroy
-  has_one :main_product_image, -> { order(weight: 'desc') },
-    class_name: :ProductImage
+  has_one :main_photo, -> { order(weight: 'desc') },
+    class_name: :Photo 
 
   before_create :set_default_uuid
 

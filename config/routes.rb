@@ -1,11 +1,14 @@
 Rails.application.routes.draw do
-  root 'welocme#index'
+  root 'welcome#index'
 
   devise_for :users, :controllers => {
     :sessions      => "users/sessions",
     :registrations => "users/registrations",
     :passwords     => "users/passwords",
   }
+
+  resources :categories, only: [:show]
+  resources :products, only: [:show]
 
 
   namespace :admin do

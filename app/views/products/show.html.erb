@@ -1,0 +1,39 @@
+<div class="row">
+  <div class="col-lg-3">
+    <%= render 'shared/categories' %>
+  </div>
+  <div class="col-lg-9">
+    <ol class="breadcrumb">
+      <li><a href="<%= root_path %>">Home</a></li>
+      <li><a href="<%= category_path @product.category %>"><%= @product.category.name %></a></li>
+      <li class="active"><%= @product.title %></li>
+    </ol>
+    <h1><%= @product.title %></h1>
+    <div class="row">
+      <% @product.photos.each do |photo| %>
+        <div class="col-xs-6 col-md-3">
+          <a href="#" class="thumbnail detail">
+            <%= image_tag photo.image.url(:middle) %>
+          </a>
+        </div>
+      <% end -%>
+    </div>
+
+    <ul class="list-unstyled">
+      <li>商品编号: <%= @product.uuid %></li>
+      <li>库存: <%= @product.amount %></li>
+    </ul>
+    <h3><strong>¥<%= @product.price %></strong></h3>
+    <p>数量: <input type="text" name="amount" value="1" /></p>
+
+    <br />
+    <br />
+    <ul class="nav nav-tabs">
+      <li role="presentation" class="active"><a href="javascript:;">商品描述</a></li>
+    </ul>
+    <br />
+    <div>
+      <%= @product.description.html_safe %>
+    </div>
+  </div>
+</div>

@@ -5,7 +5,7 @@ class Admin::CategoriesController < Admin::BaseController
 
   def index
     @categories = Category.page(params[:page] || 1).per_page(params[:per_page] || 10)
-     .order(id: "desc")
+      .order("id desc")
   end
 
   def new
