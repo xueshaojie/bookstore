@@ -6,4 +6,12 @@ Rails.application.routes.draw do
     :registrations => "users/registrations",
     :passwords     => "users/passwords",
   }
+
+
+  namespace :admin do
+    root 'sessions#new'
+    resources :sessions
+    resources :categories
+    resources :products 
+  end
 end
