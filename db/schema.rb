@@ -10,7 +10,18 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170404014358) do
+ActiveRecord::Schema.define(version: 20170404081534) do
+
+  create_table "addresses", force: :cascade do |t|
+    t.integer  "user_id"
+    t.string   "address_type"
+    t.string   "contact_name"
+    t.string   "cellphone"
+    t.string   "address"
+    t.datetime "created_at",   null: false
+    t.datetime "updated_at",   null: false
+    t.index ["user_id", "address_type"], name: "index_addresses_on_user_id_and_address_type"
+  end
 
   create_table "categories", force: :cascade do |t|
     t.string   "name"
@@ -72,6 +83,7 @@ ActiveRecord::Schema.define(version: 20170404014358) do
     t.datetime "created_at",                          null: false
     t.datetime "updated_at",                          null: false
     t.string   "uuid"
+    t.integer  "default_address_id"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
     t.index ["uuid"], name: "index_users_on_uuid", unique: true
