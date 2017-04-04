@@ -6,6 +6,7 @@
         <div class="caption">
           <h4><%= link_to product.title, product_path(product), class: 'title' %></h4>
           <p><strong>¥<%= product.price %></strong></p>
+          <p><%= show_add_to_cart product, html_class: "btn-xs" %></p>
         </div>
       </div>
     </div>

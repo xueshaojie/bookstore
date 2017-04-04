@@ -5,7 +5,7 @@ class ShoppingCartsController < ApplicationController
   def index
     fetch_home_data
     @shopping_carts = ShoppingCart.by_user_uuid(session[:user_uuid])
-      .order("id desc").includes([:product = [:main_photo]])
+      .order("id desc").includes([:product => [:main_photo]])
   end
 
   def create
@@ -27,7 +27,7 @@ class ShoppingCartsController < ApplicationController
       amount = params[:amount].to_i
       amount = amount <= 0 ? 1 : amount
 
-      @shopping_cart.update_attributes :amount, amount
+      @shopping_cart.update_attribute :amount, amount
     end
 
     redirect_to shopping_carts_path

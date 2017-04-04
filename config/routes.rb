@@ -9,7 +9,11 @@ Rails.application.routes.draw do
 
   resources :categories, only: [:show]
   resources :products, only: [:show]
-  resources :shopping_carts
+  resources :shopping_carts do
+    collection do
+      delete :clean
+    end 
+  end
 
   namespace :admin do
     root 'sessions#new'

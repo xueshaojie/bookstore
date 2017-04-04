@@ -21,7 +21,7 @@ class ShoppingCart < ApplicationRecord
       record = create!(options)
     end
 
-    record 
+    record
   end
 
 end
