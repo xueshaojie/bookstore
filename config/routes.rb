@@ -12,8 +12,10 @@ Rails.application.routes.draw do
   resources :shopping_carts do
     collection do
       delete :clean
-    end 
+    end
   end
+
+  resources :addresses 
 
   namespace :admin do
     root 'sessions#new'
