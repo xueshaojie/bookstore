@@ -33,7 +33,7 @@
     $('#address_list').html(data.data);
   })
 
-  //购物车
+  // 购物车
   $('.add-to-cart-btn').on('click', function() {
     var $this = $(this),
         $amount = $('input[name="amount"]'),

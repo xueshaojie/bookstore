@@ -2,14 +2,14 @@ class AddressesController < ApplicationController
 
   layout false
   before_action :authenticate_user!
-  before_action :find_address, only: [:edit, :update, :destroy, :set_as_default_address]
+  before_action :find_address, only: [:edit, :update, :destroy, :set_default_address]
 
   def index
     @addresses = current_user.addresses
   end
 
   def new
-    @addresses = current_user.addresses.new
+    @address = current_user.addresses.new
   end
 
   def create
@@ -58,11 +58,11 @@ class AddressesController < ApplicationController
     }
   end
 
-  def self_default_address
+  def set_default_address
     @address.set_as_default = 1
     @address.save
 
-    @address = current_user.reload.addresses
+    @addresses = current_user.reload.addresses
     render json: {
       status: 'ok',
       data: render_to_string(file: 'addresses/index')
@@ -70,12 +70,13 @@ class AddressesController < ApplicationController
   end
 
   private
+  def address_params
+    params.require(:address).permit(:contact_name, :cellphone, :address,
+      :set_as_default)
+  end
 
   def find_address
     @address = current_user.addresses.find(params[:id])
   end
 
-  def address_params
-    params.require(:address).permit(:contact_name, :cellphone, :address, :set_as_default)
-  end
 end
