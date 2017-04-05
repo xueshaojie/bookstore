@@ -8,7 +8,9 @@ Rails.application.routes.draw do
   }
 
   resources :categories, only: [:show]
-  resources :products, only: [:show]
+  resources :products, only: [:show] do
+    get :search, on: :collection 
+  end
   resources :shopping_carts do
     collection do
       delete :clean
