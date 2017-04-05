@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :comments
   root 'welcome#index'
 
   devise_for :users, :controllers => {
@@ -9,7 +10,8 @@ Rails.application.routes.draw do
 
   resources :categories, only: [:show]
   resources :products, only: [:show] do
-    get :search, on: :collection 
+    get :search, on: :collection
+    resources :comments 
   end
   resources :shopping_carts do
     collection do
