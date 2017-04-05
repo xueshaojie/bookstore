@@ -10,8 +10,11 @@ Rails.application.routes.draw do
 
   resources :categories, only: [:show]
   resources :products, only: [:show] do
+    member do
+      put "like", to: "products#upvote"
+    end
     get :search, on: :collection
-    resources :comments 
+    resources :comments
   end
   resources :shopping_carts do
     collection do

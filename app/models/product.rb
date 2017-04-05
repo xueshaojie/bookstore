@@ -17,8 +17,9 @@ class Product < ApplicationRecord
     dependent: :destroy
   has_one :main_photo, -> { order(weight: 'desc') },
     class_name: :Photo
-  has_many :comments 
-
+  has_many :comments
+  acts_as_votable
+  
   before_create :set_default_attrs
 
   private

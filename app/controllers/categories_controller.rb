@@ -4,7 +4,7 @@ class CategoriesController < ApplicationController
     fetch_home_data
 
     @category = Category.find(params[:id])
-    @products = @category.products.onshelf.page(params[:page] || 1).per_page(params[:per_page] || 12)
+    @products = @category.products.page(params[:page] || 1).per_page(params[:per_page] || 12)
       .order("id desc").includes(:main_photo)
   end
 

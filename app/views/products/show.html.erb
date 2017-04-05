@@ -18,6 +18,12 @@
         </div>
       <% end -%>
     </div>
+    <%= link_to like_product_path(@product), method: :put do %>
+      <div class="pi-thumbs-up">
+        <i class="fa fa-thumbs-up fa-2x" , style="color:#fffff;"></i>
+        <%= @product.get_upvotes.size %>
+      </div>
+    <% end %>
 
     <ul class="list-unstyled">
       <li>商品编号: <%= @product.uuid %></li>
