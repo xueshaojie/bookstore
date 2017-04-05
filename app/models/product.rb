@@ -16,13 +16,13 @@ class Product < ApplicationRecord
   has_many :photos, -> { order(weight: 'desc') },
     dependent: :destroy
   has_one :main_photo, -> { order(weight: 'desc') },
-    class_name: :Photo 
+    class_name: :Photo
 
-  before_create :set_default_uuid
+  before_create :set_default_attrs
 
   private
 
-  def set_default_uuid
+  def set_default_attrs
     self.uuid = RandomCode.generate_product_uuid
   end
 

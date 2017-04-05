@@ -4,7 +4,7 @@ class Address < ApplicationRecord
   validates :address_type, presence: true
   validates :contact_name, presence: { message: "收货人不能为空" }
   validates :cellphone, presence: { message: "手机号不能为空" }
-  validates :address, presence: { message: "地址不能为空" }
+  validates :address, presence: { message: "地址不能为空" }, allow_nil: true
 
   belongs_to :user
 
@@ -19,6 +19,7 @@ class Address < ApplicationRecord
   end
 
   private
+
   def set_as_default_address
     if self.set_as_default.to_i == 1
       self.user.default_address = self

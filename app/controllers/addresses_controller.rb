@@ -1,7 +1,6 @@
 class AddressesController < ApplicationController
 
   layout false
-  before_action :authenticate_user!
   before_action :find_address, only: [:edit, :update, :destroy, :set_default_address]
 
   def index
