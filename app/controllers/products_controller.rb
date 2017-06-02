@@ -2,6 +2,17 @@ class ProductsController < ApplicationController
 
   before_action :fetch_home_data
 
+  def index
+    @products = case params[:order]
+    when 'by_price'
+      @products = Product.page(params[:page] || 1).per_page(params[:per_page] || 12)
+        .order("price desc").includes(:main_photo)
+    else
+      @products = Product.page(params[:page] || 1).per_page(params[:per_page] || 12)
+        .order("id desc").includes(:main_photo)
+    end
+  end
+
   def show
     @product = Product.find(params[:id])
   end
@@ -15,13 +26,13 @@ class ProductsController < ApplicationController
       @products = @products.where(category_id: params[:category_id])
     end
 
-    render file: 'welcome/index'
+    render file: 'products/index'
   end
 
   def upvote
     @product = Product.find(params[:id])
     @product.upvote_by current_user
-    redirect_to :back 
+    redirect_to :back
   end
 
 end

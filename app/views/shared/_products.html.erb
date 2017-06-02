@@ -1,17 +1,15 @@
 <div class="row">
   <% @products.each do |product| %>
-    <div class="col-sm-6 col-md-4">
+    <div class="col-md-3">
       <div class="thumbnail">
         <%= link_to image_tag(product.main_photo.image.url(:middle), alt: product.title), product_path(product) %>
+        <%#= link_to image_tag(product.image1.url(:middle), alt: product.title), product_path(product) %>
         <div class="caption">
           <h4><%= link_to product.title, product_path(product), class: 'title' %></h4>
-          <p><strong>¥<%= product.price %></strong></p>
-          
-          <p><%= show_add_to_cart product, html_class: "btn-xs" %></p>
+          <span><strong>¥<%= product.price %></strong></span>
+          <span><%= show_add_to_cart product, html_class: "btn-xs" %></span>
         </div>
       </div>
     </div>
   <% end -%>
 </div>
-
-<%= will_paginate @products %>

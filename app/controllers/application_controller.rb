@@ -9,6 +9,13 @@ class ApplicationController < ActionController::Base
     @shopping_cart_count = ShoppingCart.by_user_uuid(session[:user_uuid]).count
   end
 
+  def admin_required
+    unless current_user.admin?
+      flash[:warning] = "You have no permissioin"
+      redirect_to root_path 
+    end
+  end
+
 
 
   def set_browser_uuid

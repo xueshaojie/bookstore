@@ -1,5 +1,7 @@
 class WelcomeController < ApplicationController
 
+  layout "welcome"
+
   def index
     fetch_home_data
 

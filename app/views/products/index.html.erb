@@ -1,0 +1,14 @@
+<div class="products">
+  <%= render 'common/flashes'%>
+  <h3 class="name">品位生活，享受阅读。</h3>
+  <hr>
+
+  <div class="order">
+    <span><%= link_to("价格", products_path(:order => "by_price")) %><i class="fa fa-arrow-down"></i></span>
+    <span><%= link_to("销量", products_path) %><i class="fa fa-arrow-down"></i></span>
+  </div>
+
+  <%= render 'shared/products' %>
+<div>
+
+<%= will_paginate @products %>

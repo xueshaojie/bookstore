@@ -1,11 +1,203 @@
-<div class="row">
-  <div class="col-lg-3">
-    <%= render 'shared/categories' %>
-  </div>
-  <div class="col-lg-9">
-    <ol class="breadcrumb">
-      <li class="active">Home</li>
-    </ol>
-    <%= render 'shared/products' %>
+<div class="container-fluid">
+  <div class="row">
+    <header class="main-header">
+      <div class="header-inner">
+        <div class="header-left pull-left">
+          <%= form_tag search_products_path, method: :get, class: "navbar-form navbar-left" do %>
+            <div class="form-group">
+              <% if @category %>
+                <input type="hidden" name="category_id" value="<%= @category.id %>" />
+              <% end %>
+              <input type="text" name="w" value="<%= params[:w] %>" class="form-control search-input" placeholder="<%= @category ? "在 #{@category.name} 下搜索.." : '搜索商品..' %>">
+            </div>
+            <button type="submit" class="btn btn-default">搜索</button>
+          <% end %>
+        </div>
+        <div class="header-center">
+          <a href="/">书城</a>
+        </div>
+        <div class="header-right pull-right">
+          <ul class="nav navbar-nav navbar-right">
+            <li><%= link_to "购物车(#{@shopping_cart_count})", shopping_carts_path %></li>
+            <% if !current_user %>
+              <li><a href="<%= new_user_registration_path %>">注册</a></li>
+              <li><a href="<%= new_user_session_path %>">登录</a></li>
+            <% else %>
+              <li><a href="#">欢迎你, <%= current_user.username %></a></li>
+            <% end -%>
+          </ul>
+        </div>
+      </div>
+
+      <%= render "common/flashes" %>
+    </header>
   </div>
 </div>
+
+<div class="banner-v2">
+  <div class="banner-img">
+    <%= image_tag "2.jpeg" %>
+  </div>
+  <div class="banner-detail">
+    <div  class="banner-slogan">
+      <h2>
+        欢迎回到书的<span class="sub-slogan "> 世界</span>
+      </h2>
+    </div>
+    <div class="sign-up-button">
+      <% if !current_user %>
+        <%= link_to("马上注册", new_user_registration_path,  class: "btn btn-default") %>
+      <% else %>
+        <%= link_to(content_tag(:i, '马上行动', class: 'fa fa-hand-o-right'), products_path,  class: "btn btn-default") %>
+      <% end %>
+    </div>
+  </div>
+</div>
+
+
+
+<div id="service" class="row">
+
+  <div class="module-name decorative">
+    <span>我们为您提供</span>
+  </div>
+
+  <div class="col-md-10 col-md-offset-1">
+    <div class="row">
+      <div class="col-md-4 ">
+        <div class="service-item-img text-center">
+        </div>
+
+        <div class="service-info text-center">
+          <h4>优质书籍</h4><br />
+          <p>为您甄选最优质的书籍</p>
+          <p>免去您左顾右盼的烦恼</p>
+        </div>
+     </div>
+
+      <div class="col-md-4">
+        <div class="service-item-img text-center">
+        </div>
+
+        <div class="service-info text-center">
+          <h4>温暖时光</h4><br />
+          <p>为您准备最舒心的选书体验</p>
+          <p>从选购到使用，温暖相随</p>
+        </div>
+
+      </div>
+      <div class="col-md-4">
+        <div class="service-item-img text-center">
+        </div>
+
+        <div class="service-info text-center">
+          <h4>贴心服务</h4><br />
+          <p></p>
+          <p>必定早日送至您手中</p>
+        </div>
+
+    </div>
+  </div>
+
+</div>
+</div>
+
+
+<div id="customer-feedback" class="row">
+  <div class="module-name decorative">
+    <span>我们的顾客说</span>
+  </div>
+
+  <div class="col-md-10 col-md-offset-1">
+    <div class="row">
+      <div class="col-md-4 ">
+        <div class="fd-avatar-box text-center">
+          <div class="fd-avatar-box-color-overlay"></div>
+          <img src="https://ws4.sinaimg.cn/large/006tNbRwgy1fg5vtwcuccj304c04ct8k.jpg" class="round-image-74">
+        </div>
+
+        <div class="quote-box-1">
+          <p><i class="fa fa-quote-left pull-left" aria-hidden="true"></i></p><br>
+          <p class="feedback-info text-center">
+            在书城购买书籍，绝对是我最棒的体验了<br>
+            每本书籍都是经典之作<br>
+            选书真得变成了一种享受，谢谢书城～<br>
+          </p>
+          <p class="feedback-info text-center" style="font-size:16px;">
+            - 顾客小红
+          </p>
+          <p><i class="fa fa-quote-right pull-right" aria-hidden="true"></i></p>
+        </div>
+     </div>
+
+      <div class="col-md-4">
+        <div class="fd-avatar-box text-center">
+          <div class="fd-avatar-box-color-overlay"></div>
+            <img src="https://ws2.sinaimg.cn/large/006tNbRwgy1fg5vxajfedj305k05ka9z.jpg" class="round-image-74">
+        </div>
+
+        <div class="quote-box-1">
+          <p><i class="fa fa-quote-left pull-left" aria-hidden="true"></i></p><br>
+          <p class="feedback-info text-center">
+            自从开始在书城购书<br>
+            自己发现了很多优质的书籍<br>
+            而且每次都有意外的惊喜<br>
+          </p>
+          <p class="feedback-info text-center" style="font-size:16px;">
+            - 顾客小强
+          </p>
+
+          <p><i class="fa fa-quote-right pull-right" aria-hidden="true"></i></p>
+        </div>
+      </div>
+      <div class="col-md-4">
+        <div class="fd-avatar-box text-center">
+          <div class="fd-avatar-box-color-overlay"></div>
+          <img src="https://ws1.sinaimg.cn/large/006tNbRwgy1fg5vv0kh8wj304g04gmx0.jpg" class="round-image-74">
+        </div>
+
+        <div class="quote-box-1">
+          <p><i class="fa fa-quote-left pull-left" aria-hidden="true"></i></p><br>
+          <p class="feedback-info text-center">
+            平时是个读书狂<br>
+            但每次找到自己喜欢的书籍都要花很多时间<br>
+            很开心书城解决了我的苦恼<br>
+          </p>
+          <p class="feedback-info text-center" style="font-size:16px;">
+            - 顾客小华
+          </p>
+          <p><i class="fa fa-quote-right pull-right" aria-hidden="true"></i></p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+
+
+<div id="question" class="row">
+  <div class="module-name decorative">
+    <span>FAQ</span>
+  </div>
+  <div class="col-md-10 col-md-offset-1">
+    <div class="col-md-4 col-sm-6">
+    <p class="sub-question"><b>Q：</b>支付方式有哪些？</p>
+    <p class="answer"><b>A：</b>一般统一采用，支付宝的方式。</p>
+    </div>
+    <div class="col-md-4 col-sm-6">
+    <p class="sub-question"><b>Q：</b>对于书籍的质量，你们会有把控吗？</p>
+    <p class="answer"><b>A：</b>每一本书籍都是经典之作，也更是正版之作。</p>
+    </div>
+    <div class="col-md-4 col-sm-6">
+      <p class="sub-question"><b>Q：</b>采用什么快递进行送货？</p>
+      <p class="answer"><b>A：</b>一般从用顺丰快递配送，如果你有其他快递的要求，我们也可以满足你。</p>
+    </div>
+  </div>
+</div>
+
+
+
+
+
+<%= render 'common/footer'%>

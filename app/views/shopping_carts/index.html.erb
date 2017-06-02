@@ -8,6 +8,7 @@
             <div class="media-left">
               <a href="<%= product_path(shopping_cart.product) %>">
                 <%= image_tag shopping_cart.product.main_photo.image.url(:small), class: 'media-object', alt: shopping_cart.product.title %>
+                <%#= image_tag shopping_cart.product.image1.url(:small), class: 'media-object', alt: shopping_cart.product.title %>
               </a>
             </div>
             <div class="media-body">
@@ -30,11 +31,13 @@
       <% end -%>
     </div>
 
-    <div class="pull-right">
-      <strong>总价: ¥<%= @shopping_carts.sum { |cart| cart.amount * cart.product.price } %></strong>
-      &nbsp;
-      <%= link_to "去结算", new_order_path, class: "btn btn-danger btn-lg" %>
-    </div>
-    <div class="clearfix"></div>
+    <% unless @shopping_carts.blank? %>
+      <div class="pull-right">
+        <strong>总价: ¥<%= @shopping_carts.sum { |cart| cart.amount * cart.product.price } %></strong>
+        &nbsp;
+        <%= link_to "去结算", new_order_path, class: "btn btn-danger btn-lg" %>
+      </div>
+      <div class="clearfix"></div>
+    <% end %>
   </div>
 </div>

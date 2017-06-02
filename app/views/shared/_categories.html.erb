@@ -1,5 +1,1 @@
-<ul class="list-group">
-  <% @categories.each do |category| %>
-    <li class="list-group-item"><a href="<%= category_path(category) %>"><%= category.name %></a></li>
-  <% end -%>
-</ul>
+<%= link_to image_tag(product.main_photo.image.url(:middle), alt: product.title), product_path(product) %>

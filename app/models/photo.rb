@@ -3,8 +3,9 @@ class Photo < ApplicationRecord
   belongs_to :product
 
   has_attached_file :image, styles: {
-    small: '60^x60',
-    middle: '200^x200',
+    small: '60x60>',
+    middle: '200x200>',
+    middlem: '410x410>',
     big: "960x"
   }
   validates_attachment_content_type :image, content_type: /\Aimage\/.*\Z/

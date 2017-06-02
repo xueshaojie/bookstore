@@ -1,6 +1,7 @@
 Rails.application.routes.draw do
   resources :comments
   root 'welcome#index'
+  resources :home, only: [:index]
 
   devise_for :users, :controllers => {
     :sessions      => "users/sessions",
@@ -9,18 +10,15 @@ Rails.application.routes.draw do
   }
 
   resources :categories, only: [:show]
-  resources :products, only: [:show] do
+  resources :products, only: [:index, :show] do
     member do
       put "like", to: "products#upvote"
     end
     get :search, on: :collection
     resources :comments
   end
-  resources :shopping_carts do
-    collection do
-      delete :clean
-    end
-  end
+  resources :shopping_carts
+
 
   resources :addresses do
     member do

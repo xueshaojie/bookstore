@@ -1,4 +1,4 @@
-class Admin::PhotosController < ApplicationController
+class Admin::PhotosController < Admin::BaseController
 
   before_action :find_product
   before_action :find_photo, only: [:update, :destroy]
