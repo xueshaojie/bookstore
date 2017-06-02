@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170528081953) do
+ActiveRecord::Schema.define(version: 20170602123902) do
 
   create_table "addresses", force: :cascade do |t|
     t.integer  "user_id"
@@ -77,6 +77,7 @@ ActiveRecord::Schema.define(version: 20170528081953) do
     t.text     "description"
     t.datetime "created_at",                                       null: false
     t.datetime "updated_at",                                       null: false
+    t.string   "author"
     t.index ["category_id"], name: "index_products_on_category_id"
     t.index ["title"], name: "index_products_on_title"
     t.index ["uuid"], name: "index_products_on_uuid", unique: true

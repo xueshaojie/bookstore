@@ -3,6 +3,7 @@ class Product < ApplicationRecord
   validates :category_id, presence: { message: "所属分类不能为空"}
   validates :title, presence: { message: "名称不能为空" }
   validates :title, uniqueness: { message: "名称不能重复" }
+  validates :author, presence: { message: "作者不能为空" }
   validates :amount, presence: { message: "库存不能为空" }
   validates :amount, numericality: { only_integer: true,
     message: "库存必须为整数"},

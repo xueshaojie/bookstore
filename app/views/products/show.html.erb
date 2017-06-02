@@ -1,6 +1,5 @@
 <div class="product-show">
 
-  <!-- 主图 -->
   <div class="col-md-5">
     <% @product.photos.each do |photo| %>
         <a href="#" class="thumbnail detail">
@@ -9,20 +8,16 @@
     <% end -%>
   </div>
 
-  <!-- 商品信息 -->
   <div class="col-md-7">
 
-    <!-- 商品标题 -->
     <h2 class="product-title"><%= @product.title %></h2>
 
-    <!-- 商品简述 -->
     <div class="product-description">
       <p>
         <%= simple_format(@product.description) %>
       </p>
     </div>
 
-    <!-- 商品价格 -->
     <div class="product-price-bgcolor">
       <div class="product-price">
         价格：<%= @product.price %> ￥
@@ -32,50 +27,40 @@
     <div class="row">
       <div class="col-sm-6">
 
-        <div class="product-quantity">
-          作者：
+        <div class="product-amount">
+          作者：<%= @product.author %>
         </div>
 
-        <!-- 商品库存 -->
-        <div class="product-quantity">
+        <div class="product-amount">
           库存量： <%= @product.amount %>
         </div>
 
       </div>
 
       <div class="col-sm-6">
-        <!-- 商品类别 -->
-        <div class="product-quantity">
+        <div class="product-amount">
           分类： <%= @product.category.name %>
         </div>
 
-        <!-- 商品服务 -->
-        <div class="product-quantity">
+        <div class="product-amount">
           包邮： 99元起包邮 | 7天无忧退货
         </div>
       </div>
     </div>
 
-    <!-- 按钮区域 -->
     <div class="add-to-cart-buttom row">
-      <!-- 加入购物车按钮 -->
       <div class="col-sm-6">
         <p><%= show_add_to_cart @product %></p>
       </div>
 
-      <!-- 收藏商品按钮 -->
 
     </div>
 
   </div>
 
-  <!-- 商品详情区域 + 推荐展示 -->
   <div class="container">
-      <!-- 商品详情区域 + 商品评论区域 -->
       <div class="col-md-9 product-particulars">
 
-
-        <!-- 导航栏 -->
         <div class="row">
           <ul class="nav nav-tabs nav-justified">
             <li class="active">
@@ -89,12 +74,10 @@
 
         <div class="tab-content">
 
-          <!-- 商品详情区域 -->
           <div class="product-particulars-box row tab-pane active" id="tab_default_1">
             <%= simple_format(@product.description) %>
           </div>
 
-          <!-- 商品评论区域 -->
           <div class="product-particulars-box row tab-pane" id="tab_default_2">
             <h3 class="comments_title">
               <%= @product.comments.count %> Comments
@@ -111,7 +94,6 @@
       </div>
 
 
-      <!-- 购物指南区 -->
       <div class="col-md-3">
         <div class="product-recommend">
           <h5>购物指南</h5>
