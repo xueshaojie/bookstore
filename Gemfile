@@ -8,7 +8,6 @@ end
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '~> 5.0.0', '>= 5.0.0.1'
-gem 'ruby', '2.3.4'
 # Use sqlite3 as the database for Active Record
 # Use Puma as the app server
 #gem 'puma', '~> 3.0'
@@ -47,6 +46,7 @@ gem 'rest-client'
 gem 'acts_as_votable', '~> 0.10.0'
 gem 'carrierwave-qiniu'
 gem 'qiniu-rs'
+gem 'fog'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
