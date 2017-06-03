@@ -1,6 +1,7 @@
 Rails.application.routes.draw do
+
+  root "welcome#index"
   resources :comments
-  root 'welcome#index'
   resources :home, only: [:index]
 
   devise_for :users, :controllers => {
