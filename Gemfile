@@ -45,6 +45,7 @@ gem 'paperclip', '~> 5.0.0'
 gem 'rest-client'
 gem 'acts_as_votable', '~> 0.10.0'
 gem 'carrierwave-qiniu'
+gem 'paperclip-qiniu'
 gem 'qiniu-rs'
 
 group :development, :test do
