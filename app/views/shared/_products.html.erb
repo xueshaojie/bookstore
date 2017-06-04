@@ -3,7 +3,7 @@
     <div class="col-md-3">
       <div class="thumbnail">
         <% link_to product_path(product) %>
-        <%= link_to image_tag(product.image.thumb.url, alt: product.title), product_path(product) %>
+        <%= link_to image_tag(product.image.thumb, alt: product.title), product_path(product) %>
         <div class="caption">
           <h4><%= link_to product.title, product_path(product), class: 'title' %></h4>
           <span><strong>¥<%= product.price %></strong></span>

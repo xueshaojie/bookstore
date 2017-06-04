@@ -5,7 +5,7 @@ class CategoriesController < ApplicationController
 
     @category = Category.find(params[:id])
     @products = @category.products.page(params[:page] || 1).per_page(params[:per_page] || 12)
-      .order("id desc").includes(:main_photo)
+      .order("id desc")
   end
 
 end
