@@ -6,10 +6,10 @@ class ProductsController < ApplicationController
     @products = case params[:order]
     when 'by_price'
       @products = Product.page(params[:page] || 1).per_page(params[:per_page] || 12)
-        .order("price desc").includes(:main_photo)
+        .order("price desc")
     else
       @products = Product.page(params[:page] || 1).per_page(params[:per_page] || 12)
-        .order("id desc").includes(:main_photo)
+        .order("id desc")
     end
   end
 
@@ -20,7 +20,7 @@ class ProductsController < ApplicationController
   def search
     @products = Product.where("title like :title", title: "%#{params[:w]}%")
       .order("id desc").page(params[:page] || 1).per_page(params[:per_page] || 10)
-      .includes(:main_photo)
+
 
     unless params[:category_id].blank?
       @products = @products.where(category_id: params[:category_id])

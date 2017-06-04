@@ -8,7 +8,23 @@
     <span><%= link_to("销量", products_path) %><i class="fa fa-arrow-down"></i></span>
   </div>
 
-  <%= render 'shared/products' %>
+  <%#= render 'shared/products' %>
+
+  <div class="row">
+    <% @products.each do |product| %>
+      <div class="col-md-3">
+        <div class="thumbnail">
+          <% link_to product_path(product) %>
+          <%= link_to image_tag(product.image.thumb, alt: product.title), product_path(product) %>
+          <div class="caption">
+            <h4><%= link_to product.title, product_path(product), class: 'title' %></h4>
+            <span><strong>¥<%= product.price %></strong></span>
+            <span><%= show_add_to_cart product, html_class: "btn-xs" %></span>
+          </div>
+        </div>
+      </div>
+    <% end -%>
+  </div>
 <div>
 
 <%= will_paginate @products %>

@@ -14,12 +14,14 @@ class Product < ApplicationRecord
   validates :description, presence: { message: "描述不能为空" }
 
   belongs_to :category
-  has_many :photos, -> { order(weight: 'desc') },
-    dependent: :destroy
-  has_one :main_photo, -> { order(weight: 'desc') },
-    class_name: :Photo
+#  has_many :photos, -> { order(weight: 'desc') },
+#    dependent: :destroy
+#  has_one :main_photo, -> { order(weight: 'desc') },
+#    class_name: :Photo
   has_many :comments
   acts_as_votable
+
+  mount_uploader :image, ImageUploader
 
   private
 

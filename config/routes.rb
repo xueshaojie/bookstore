@@ -39,8 +39,6 @@ Rails.application.routes.draw do
     root 'sessions#new'
     resources :sessions
     resources :categories
-    resources :products  do
-      resources :photos, only: [:index, :create, :update, :destroy]
-    end
+    resources :products 
   end
 end

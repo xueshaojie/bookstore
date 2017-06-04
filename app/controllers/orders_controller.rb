@@ -3,7 +3,7 @@ class OrdersController < ApplicationController
   def new
     fetch_home_data
     @shopping_carts = ShoppingCart.by_user_uuid(session[:user_uuid])
-      .order("id desc").includes([:product => [:main_photo]])
+      .order("id desc")
   end
 
   def create

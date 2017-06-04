@@ -5,14 +5,17 @@ class ImageUploader < CarrierWave::Uploader::Base
   include CarrierWave::MiniMagick
 
   # Choose what kind of storage to use for this uploader:
-  #storage :file
+#  storage :file
   #storage :fog
 
   if Rails.env.production?
-    storage :fog
+    storage :qiniu
   elsif Rails.env.development?
     storage :file
   end
+
+
+  #storage :qiniu
 
   # Override the directory where uploaded files will be stored.
   # This is a sensible default for uploaders that are meant to be mounted:
@@ -42,12 +45,30 @@ class ImageUploader < CarrierWave::Uploader::Base
 
   #process resize_to_fit: [800, 800]
 
+  process resize_to_fit: [800, 800]
+
+  version :avatarmini do
+    process resize_to_fit: [60, 60]
+  end
+
+  version :avatar do
+    process resize_to_fit: [80, 80]
+  end
+
   version :thumb do
-    process resize_to_fill: [200, 200]
+    process resize_to_fit: [200, 200]
   end
 
   version :medium do
-    process resize_to_fill: [500, 500]
+    process resize_to_fit: [400, 400]
+  end
+
+  version :courseimgbanner do
+    process resize_to_fit: [2000, 400]
+  end
+
+  version :articleimg do
+    process resize_to_fit: [800, 600]
   end
 
   # Add a white list of extensions which are allowed to be uploaded.

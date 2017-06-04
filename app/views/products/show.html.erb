@@ -1,11 +1,7 @@
 <div class="product-show">
 
   <div class="col-md-5">
-    <% @product.photos.each do |photo| %>
-        <a href="#" class="thumbnail detail">
-          <%= image_tag photo.image.url(:middlem)%>
-        </a>
-    <% end -%>
+    <%= image_tag(@product.image.medium, class: "thumbnail img-responsive") %>
   </div>
 
   <div class="col-md-7">

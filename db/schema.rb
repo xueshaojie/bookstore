@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170602123902) do
+ActiveRecord::Schema.define(version: 20170603100653) do
 
   create_table "addresses", force: :cascade do |t|
     t.integer  "user_id"
@@ -55,19 +55,6 @@ ActiveRecord::Schema.define(version: 20170602123902) do
     t.index ["user_id"], name: "index_orders_on_user_id"
   end
 
-  create_table "photos", force: :cascade do |t|
-    t.integer  "product_id"
-    t.integer  "weight",             default: 0
-    t.string   "image_file_name"
-    t.string   "image_content_type"
-    t.integer  "image_file_size"
-    t.datetime "image_updated_at"
-    t.datetime "created_at",                     null: false
-    t.datetime "updated_at",                     null: false
-    t.index ["product_id", "weight"], name: "index_photos_on_product_id_and_weight"
-    t.index ["product_id"], name: "index_photos_on_product_id"
-  end
-
   create_table "products", force: :cascade do |t|
     t.integer  "category_id"
     t.string   "title"
@@ -78,6 +65,7 @@ ActiveRecord::Schema.define(version: 20170602123902) do
     t.datetime "created_at",                                       null: false
     t.datetime "updated_at",                                       null: false
     t.string   "author"
+    t.string   "image"
     t.index ["category_id"], name: "index_products_on_category_id"
     t.index ["title"], name: "index_products_on_title"
     t.index ["uuid"], name: "index_products_on_uuid", unique: true

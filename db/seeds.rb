@@ -10,9 +10,9 @@ User.create(email: "test@gmail.com", password: "123456", password_confirmation: 
 User.create(email: "admin@gmail.com", password: "123123", password_confirmation: "123123", is_admin: true)
 Category.create(name: "投资")
 Category.create(name: "计算机")
-Category.create(name: "文学")
-Category.create(name: "数学")
-Category.create(name: "管理")
+#Category.create(name: "文学")
+#Category.create(name: "数学")
+#Category.create(name: "管理")
 #Product.create!(title: "黑客与画家",
 #  description: "阳志平推荐",
   #price: 45,
