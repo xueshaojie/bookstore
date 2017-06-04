@@ -1,5 +1,5 @@
-#source 'https://ruby.taobao.org'
-source 'https://rubygems.org'
+source 'https://ruby.taobao.org'
+#source 'https://rubygems.org'
 
 git_source(:github) do |repo_name|
   repo_name = "#{repo_name}/#{repo_name}" unless repo_name.include?("/")
@@ -46,6 +46,7 @@ gem 'font-awesome-rails'
 gem 'will_paginate'
 gem 'rest-client'
 gem 'acts_as_votable', '~> 0.10.0'
+gem 'qiniu-rs'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
