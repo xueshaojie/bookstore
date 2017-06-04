@@ -1,6 +1,5 @@
 Rails.application.routes.draw do
 
-  root "welcome#index"
   resources :comments
   resources :home, only: [:index]
 
@@ -39,6 +38,8 @@ Rails.application.routes.draw do
     root 'sessions#new'
     resources :sessions
     resources :categories
-    resources :products 
+    resources :products
   end
+
+  root 'welcome#index'
 end
