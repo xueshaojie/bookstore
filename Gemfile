@@ -1,4 +1,5 @@
-source 'https://ruby.taobao.org'
+#source 'https://ruby.taobao.org'
+source 'https://rubygems.org'
 
 git_source(:github) do |repo_name|
   repo_name = "#{repo_name}/#{repo_name}" unless repo_name.include?("/")
@@ -39,12 +40,12 @@ gem 'bootstrap-sass'
 gem 'simple_form'
 gem 'devise'
 gem 'carrierwave'
+gem 'carrierwave-qiniu'
 gem 'mini_magick'
 gem 'font-awesome-rails'
 gem 'will_paginate'
 gem 'rest-client'
 gem 'acts_as_votable', '~> 0.10.0'
-gem 'carrierwave-qiniu'
 gem 'qiniu-rs'
 
 group :development, :test do
