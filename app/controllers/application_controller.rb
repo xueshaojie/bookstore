@@ -12,17 +12,15 @@ class ApplicationController < ActionController::Base
   def admin_required
     unless current_user.admin?
       flash[:warning] = "You have no permissioin"
-      redirect_to root_path 
+      redirect_to root_path
     end
   end
-
-
 
   def set_browser_uuid
     uuid = cookies[:user_uuid]
 
     unless uuid
-      unless !current_user
+      if user_signed_in?
         uuid = current_user.uuid
       else
         uuid = RandomCode.generate_utoken
@@ -36,5 +34,7 @@ class ApplicationController < ActionController::Base
   def update_browser_uuid uuid
     session[:user_uuid] = cookies.permanent['user_uuid'] = uuid
   end
+
+
 
 end

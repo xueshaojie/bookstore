@@ -57,4 +57,22 @@ class Users::RegistrationsController < Devise::RegistrationsController
   # def after_inactive_sign_up_path_for(resource)
   #   super(resource)
   # end
+
+  class RegistrationsController < Devise::RegistrationsController
+
+    # Your logic here
+    def create
+      @user = User.new(params.require(:user)
+        .permit(:email, :password, :password_confirmation))
+      @user.uuid = session[:user_uuid]
+
+      if @user.save
+        flash[:notice] = "注册成功，请登录"
+        redirect_to new_session_path
+      else
+        render action: :new
+      end
+    end
+
+  end
 end
