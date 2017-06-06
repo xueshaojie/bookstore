@@ -15,15 +15,6 @@ Category.create(name: "个人成长")
 #Category.create(name: "数学")
 #Category.create(name: "管理")
 
-Product.create!(title: "穷查理宝典",
-  category_id: 1,
-  author:"查理·芒格",
-  amount: 100,
-  price: 125.0,
-  description: "《穷查理宝典》首次收录了查理过去20年来主要的公开演讲，书中十一篇讲稿全面展现了这个传奇人物的聪明才智。",
-  image: open("http://ww1.sinaimg.cn/large/006tNc79gy1ffrk1l5jfdj30af0dw0tn.jpg")
-)
-
 Product.create!(title: "刻意练习",
   category_id: 3,
   author: "安德斯·艾利克森",
@@ -31,6 +22,14 @@ Product.create!(title: "刻意练习",
   price: 29.5,
   description: "杰出不是一种天赋，而是一种人人都可以学会的技巧！迄今发现的最强大学习法，成为任何领域杰出人物的黄金法则！",
   image: open("http://ws1.sinaimg.cn/large/006tNc79gy1fga9s81y1xj30lc0sewmp.jpg")
+)
+Product.create!(title: "穷查理宝典",
+  category_id: 1,
+  author:"查理·芒格",
+  amount: 100,
+  price: 125.0,
+  description: "《穷查理宝典》首次收录了查理过去20年来主要的公开演讲，书中十一篇讲稿全面展现了这个传奇人物的聪明才智。",
+  image: open("http://ww1.sinaimg.cn/large/006tNc79gy1ffrk1l5jfdj30af0dw0tn.jpg")
 )
 Product.create!(title: "黑客与画家",
   category_id: 2,
