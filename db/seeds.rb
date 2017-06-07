@@ -21,5 +21,5 @@ Product.create!(title: "穷查理宝典",
   amount: 100,
   price: 125.0,
   description: "《穷查理宝典》首次收录了查理过去20年来主要的公开演讲，书中十一篇讲稿全面展现了这个传奇人物的聪明才智。",
-  image: open("http://ww1.sinaimg.cn/large/006tNc79gy1ffrk1l5jfdj30af0dw0tn.jpg")
+  image: open("https://ww1.sinaimg.cn/large/006tNc79gy1ffrk1l5jfdj30af0dw0tn.jpg")
 )
